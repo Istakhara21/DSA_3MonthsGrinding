@@ -1,20 +1,19 @@
 #include <iostream>
 using namespace std;
 
-// to calculate sum of n factorials
-int fac(int n) {
-    int sum = 1;
-    for(int i=1; i<=n; i++) {
-        sum = sum*i;
-    }
+// to calculate sum of n digits of a number
+int sumOfDigit(int num) {
+    int digSum = 0;
 
-    return sum;
+    while(num > 0) {
+        int lastDig = num % 10;
+        num /= 10;
+        digSum += lastDig;
+    }
+    return digSum;
 }
 
-
-
-int main()
-{
-    cout << fac(5);
+int main () {
+    cout << "sum = " << sumOfDigit(2356) << endl;
     return 0;
 }
