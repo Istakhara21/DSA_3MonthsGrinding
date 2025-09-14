@@ -1,40 +1,20 @@
 #include <iostream>
 using namespace std;
 
+// to calculate sum of n factorials
+int fac(int n) {
+    int sum = 1;
+    for(int i=1; i<=n; i++) {
+        sum = sum*i;
+    }
+
+    return sum;
+}
+
+
+
 int main()
 {
-    int n = 0;
-    cin >> n;
-
-    //For Top Half
-
-    //first triangle
-    for(int i=0; i<n; i++) {
-        for(int j=0; j<=i; j++) {
-            cout << '*';
-        }
-        for(int j=2*(n-i)-2; j>0; j--) {
-            cout << ' ';
-        }
-        for(int j=0; j<i+1; j++) {
-            cout << '*';
-        }
-        cout << endl;
-    }
-
-    //For Bottom Half
-    for(int i=0; i<n; i++) {
-        for(int j=n-i; j>0; j--) {
-            cout << '*';
-        }
-        for(int j=0; j<2*i; j++) {
-            cout << " ";
-        }
-        for(int j=n-i; j>0; j--){
-            cout << '*';
-        }
-        cout << endl;
-    }
-
+    cout << fac(5);
     return 0;
 }
