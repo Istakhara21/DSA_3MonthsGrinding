@@ -1,22 +1,38 @@
 #include <iostream>
 using namespace std;
 
-// to calculate sum of n digits of a number
-int factorial(int n) {
-    int sum = 1;
-
-    while(n>0) {
-        sum = sum*n;
-        n--;
+// to check whether a number is prime or not
+bool isPrime(int n)
+{
+    if (n <= 1)
+    {
+        return false;
     }
-    return sum;
+    for (int i = 2; i * i <= n; i++)
+    {
+        if (n % i == 0)
+        {
+            return false;
+        }
+    }
+    return true;
+};
+
+int printPrime(int n)
+{
+    for (int i = 2; i <= n; i++)
+    {
+        bool primeChecker = isPrime(i);
+
+        if (primeChecker == true) {
+            cout << i << " is a Prime number" << endl;
+        }
+    }
 }
 
-int nCr(int n, int r) {
-    int val = factorial(n) / ((factorial(r) * factorial(n-r)));
-}
-
-int main () {
-    cout << "nCr = " << nCr(6,3) << endl;
+int main()
+{
+    cout << "1 is a Prime number" << endl;
+    cout << printPrime(15);
     return 0;
-}
+};
