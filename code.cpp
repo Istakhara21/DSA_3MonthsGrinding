@@ -1,22 +1,23 @@
 #include <iostream>
 using namespace std;
 
-// Decimal to Binary
-int DecToBin(int n) {
-    int ans = 0; // binary num
-    int pow = 1; // (10)0
-    while(n>0) {
-        int rem = n%2;
-        n = n/2;
-        ans = ans + (rem*pow);
-        pow = pow*10;
+// Binary to Decimal
+int DecToBin(int n)
+{
+    int sum = 0, pow = 1; // pow =1 -> 10(0)
+    while (n > 0)
+    {
+        int rem = n % 2;
+        sum += (rem * pow);
+        pow *= 10;
+        n /= 2;
     }
-    return ans;
+    return sum;
 }
 
 int main()
 {
 
-    cout << DecToBin(100);
+    cout << DecToBin(55);
     return 0;
 };
