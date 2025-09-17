@@ -4,26 +4,22 @@ using namespace std;
 
 
 
+int linearSearch(int arr[], int size, int target) {
+    for(int i=0; i<size; i++) {
+        if(arr[i] == target) {
+            return i;
+        }
+    }
+    return -1; //NOT FOUND
+}
+
 int main()
 {
-    int arr[6] = {5,15,22,1,-5,24};
-    //find the smallest number
-    int smallest = INT_MAX;
-    for(int i=0; i<6; i++) {
-        if(smallest > arr[i]) {
-            smallest = arr[i];
-        }
-    }
-    cout << smallest << endl;
-    
+    int arr[] = {3,6,8,94,2,6};
+    int size = 6;
+    int target = 8;
 
-    //TO find the largets number
-    int largest = INT_MIN;
-    for(int i=0; i<6; i++) {
-        if(largest < arr[i]) {
-            largest = arr[i];
-        }
-    }
-    cout << largest;
+    cout << linearSearch(arr, size, target) << endl;
+
     return 0;
 }
