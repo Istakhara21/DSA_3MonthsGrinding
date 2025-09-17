@@ -2,24 +2,27 @@
 #include <climits>
 using namespace std;
 
-
-
-int linearSearch(int arr[], int size, int target) {
-    for(int i=0; i<size; i++) {
-        if(arr[i] == target) {
-            return i;
-        }
+int reverseArr(int arr[], int sz)
+{
+    int start = 0, end = sz - 1;
+    while (start < end)
+    {
+        swap(arr[start], arr[end]);
+        start++;
+        end--;
     }
-    return -1; //NOT FOUND
 }
 
 int main()
 {
-    int arr[] = {3,6,8,94,2,6};
-    int size = 6;
-    int target = 8;
+    int arr[] = {3, 6, 8, 94, 2, 6};
+    int sz = 6;
 
-    cout << linearSearch(arr, size, target) << endl;
+    reverseArr(arr, sz);
+
+    for(int i=0; i<sz; i++) {
+        cout << arr[i] << " ";
+    }
 
     return 0;
 }
