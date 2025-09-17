@@ -15,6 +15,7 @@ int main()
         }
     }
     cout << smallest << endl;
+    
 
     //TO find the largets number
     int largest = INT_MIN;
