@@ -3,38 +3,26 @@
 #include <vector>
 using namespace std;
 
-int largestVal(int arr[], int sz) {
-    int largest = INT_MIN;
-    int largeIndex;
-    for(int i=0; i<sz; i++) {
-        if(largest < arr[i]) {
-            largest = arr[i];
-            largeIndex = i;
-        }
+int sumProd(int arr[], int sz)
+{
+    int sum = 0;
+    int prod = 1;
+    for (int i = 0; i < sz; i++)
+    {
+        sum += arr[i];
+        prod *= arr[i];
     }
-    return largeIndex;
-}
 
-int SmallestVal(int arr[], int sz) {
-    int smallest = INT_MAX;
-    int smallIndex;
-    for(int i=0; i<sz; i++) {
-        if(smallest > arr[i]) {
-            smallest = arr[i];
-            smallIndex = i;
-        }
-    }
-    return smallIndex;
+    cout << "sum: " << sum << endl;
+    cout << "Product: " << prod << endl;
 }
 
 int main()
 {
-    int arr[] = {32,43,125,64,72};
-    int sz = 5;
+    int arr[] = {34, 45, 34, 2, 4, 23, 142};
+    int sz = 7;
 
-    cout << largestVal(arr, sz) << endl;
-    cout << SmallestVal(arr, sz) << endl;
-
-
+    cout << sumProd(arr, sz) << endl;
+    
     return 0;
 }
