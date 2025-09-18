@@ -3,6 +3,9 @@
 #include <vector>
 using namespace std;
 
+
+
+// O(n3)
 int maxSubarray(int arr[], int sz)
 {
     int larger = INT_MIN;
@@ -33,11 +36,16 @@ int maxSubarray(int arr[], int sz)
     return larger;
 }
 
-int optimizedWay(int arr[], int sz) {
+
+// O(n2)
+int optimizedWay(int arr[], int sz)
+{
     int maxSum = INT_MIN;
-    for(int st=0; st<sz; st++) {
+    for (int st = 0; st < sz; st++)
+    {
         int currentSum = 0;
-        for(int end=st; end<sz; end++) {
+        for (int end = st; end < sz; end++)
+        {
             currentSum += arr[end];
             maxSum = max(maxSum, currentSum);
         }
@@ -47,13 +55,31 @@ int optimizedWay(int arr[], int sz) {
     return 0;
 }
 
+// Kadane's Algorithm -> O(n)
+int kadane(int arr[], int sz)
+{
+    int curSum = 0, maxSum = INT_MIN;
+    for (int i = 0; i < sz; i++)
+    {
+        curSum += arr[i];
+        maxSum = max(curSum, maxSum);
+        if (curSum < 0)
+        {
+            curSum = 0;
+        }
+    }
+    return maxSum;
+}
+
 int main()
 {
-    int arr[] = {2,34,2,45,123};
+    int arr[] = {2, 34, 2, 45, 123};
     int sz = 5;
 
-    cout << optimizedWay(arr, sz) << endl;
-    cout << maxSubarray(arr, sz);
+    // cout << optimizedWay(arr, sz) << endl;
+    // cout << maxSubarray(arr, sz);
+
+    cout << kadane(arr, sz);
 
     return 0;
 }
