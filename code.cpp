@@ -3,19 +3,42 @@
 #include <vector>
 using namespace std;
 
-int main()
+int maxSubarray(int arr[], int sz)
 {
-    vector<int> vec = {1, 2, 34, 5, 8, 342, 9343};
-    vector<int> newVec;
-   
-    int target = 8;
-    for(int i=vec.size()-1; i>=0; i--) {
-        newVec.push_back(vec[i]);
+    int larger = INT_MIN;
+
+    for (int st = 0; st < sz; st++)
+    {
+        int sum = 0;
+        for (int end = st; end < sz; end++)
+        {
+
+            for (int i = st; i <= end; i++)
+            {
+                sum = sum + arr[i];
+            }
+            // cout << sum;
+            if (larger < sum)
+            {
+                larger = sum;
+            }
+            // cout << larger;
+            sum = 0;
+            cout << "  ";
+        }
+        cout << endl;
     }
 
-    for(int val: newVec) {
-        cout << val << "  ";
-    }
+    cout << endl;
+    return larger;
+}
+
+int main()
+{
+    int arr[] = {2,34,2,45,123};
+    int sz = 5;
+
+    cout << maxSubarray(arr, sz);
 
     return 0;
 }
