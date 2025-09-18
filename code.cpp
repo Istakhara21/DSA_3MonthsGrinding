@@ -1,28 +1,40 @@
 #include <iostream>
 #include <climits>
+#include <vector>
 using namespace std;
 
-int reverseArr(int arr[], int sz)
-{
-    int start = 0, end = sz - 1;
-    while (start < end)
-    {
-        swap(arr[start], arr[end]);
-        start++;
-        end--;
+int largestVal(int arr[], int sz) {
+    int largest = INT_MIN;
+    int largeIndex;
+    for(int i=0; i<sz; i++) {
+        if(largest < arr[i]) {
+            largest = arr[i];
+            largeIndex = i;
+        }
     }
+    return largeIndex;
+}
+
+int SmallestVal(int arr[], int sz) {
+    int smallest = INT_MAX;
+    int smallIndex;
+    for(int i=0; i<sz; i++) {
+        if(smallest > arr[i]) {
+            smallest = arr[i];
+            smallIndex = i;
+        }
+    }
+    return smallIndex;
 }
 
 int main()
 {
-    int arr[] = {3, 6, 8, 94, 2, 6};
-    int sz = 6;
+    int arr[] = {32,43,125,64,72};
+    int sz = 5;
 
-    reverseArr(arr, sz);
+    cout << largestVal(arr, sz) << endl;
+    cout << SmallestVal(arr, sz) << endl;
 
-    for(int i=0; i<sz; i++) {
-        cout << arr[i] << " ";
-    }
 
     return 0;
 }
