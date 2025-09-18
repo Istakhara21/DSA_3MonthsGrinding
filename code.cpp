@@ -3,17 +3,13 @@
 #include <vector>
 using namespace std;
 
-int commonVal(int arr1[], int arr2[], int sz)
+int linearSearch(int arr1[], int sz)
 {
-    for(int i=0; i<sz; i++){
-        int count = 0;
-        for(int j=0; j<sz; j++) {
-            if(arr1[i] == arr2[j]) {
-                count++;
-            }
-        }
-        if(count > 0) {
-            cout << arr1[i] << "  ";
+    int target = 8;
+    for(int i=0; i<sz; i++) {
+        if(target == arr1[i]) {
+            cout << "It is in the array " << arr1[i] <<  endl;
+            cout << "Index No: " << i << endl;
         }
     }
     return 0;
@@ -21,11 +17,11 @@ int commonVal(int arr1[], int arr2[], int sz)
 
 int main()
 {
-    int arr1[] = {1,2,3,4,5};
-    int arr2[] = {3,25,12,2,22};
+    int arr1[] = {1,2,3,8,4,5};
+    // int arr2[] = {3,25,12,2,22};
     int sz = 5;
 
-    cout << commonVal(arr1, arr2, sz);
+    cout << linearSearch(arr1, sz);
 
     return 0;
 }
