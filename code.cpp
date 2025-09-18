@@ -3,22 +3,17 @@
 #include <vector>
 using namespace std;
 
-int uniqueVal(int arr[], int sz)
+int commonVal(int arr1[], int arr2[], int sz)
 {
-    for (int i = 0; i < sz; i++)
-    {
+    for(int i=0; i<sz; i++){
         int count = 0;
-
-        for (int j = 0; j < sz; j++)
-        {
-            if (arr[i] == arr[j])
-            {
+        for(int j=0; j<sz; j++) {
+            if(arr1[i] == arr2[j]) {
                 count++;
             }
         }
-        if (count == 1)
-        {
-            cout << arr[i] << " ";
+        if(count > 0) {
+            cout << arr1[i] << "  ";
         }
     }
     return 0;
@@ -26,10 +21,11 @@ int uniqueVal(int arr[], int sz)
 
 int main()
 {
-    int arr[] = {34, 45, 34, 2,2,4, 4, 23, 142};
-    int sz = 9;
+    int arr1[] = {1,2,3,4,5};
+    int arr2[] = {3,25,12,2,22};
+    int sz = 5;
 
-    cout << uniqueVal(arr, sz);
+    cout << commonVal(arr1, arr2, sz);
 
     return 0;
 }
