@@ -3,62 +3,33 @@
 #include <vector>
 using namespace std;
 
-int largestVal(int arr[], int sz)
+int uniqueVal(int arr[], int sz)
 {
-    int largest = INT_MIN;
-
     for (int i = 0; i < sz; i++)
     {
-        if (largest < arr[i])
+        int count = 0;
+
+        for (int j = 0; j < sz; j++)
         {
-            largest = arr[i];
+            if (arr[i] == arr[j])
+            {
+                count++;
+            }
         }
-    }
-    cout << "Largest value: " << largest << endl;
-    
-}
-
-int SmallestVal(int arr[], int sz)
-{
-    int smallest = INT_MAX;
-
-    for (int i = 0; i < sz; i++)
-    {
-        if (smallest > arr[i])
+        if (count == 1)
         {
-            smallest = arr[i];
+            cout << arr[i] << " ";
         }
     }
-    cout << "Smallest value: " << smallest << endl;
-}
-
-int swapFn(int arr[], int sz) {
-    int min = SmallestVal(arr, sz);
-    int max = largestVal(arr, sz);
-
-    for(int i=0; i<sz; i++) {
-        if(arr[i] == min) {
-            swap(max, min);
-            break;
-        }
-    }
-    for (int i=0; i<sz; i++) {
-        cout << arr[i] << " ";
-    }
+    return 0;
 }
 
 int main()
 {
-    int arr[] = {34, 45, 34, 2, 4, 23, 142};
-    int sz = 7;
+    int arr[] = {34, 45, 34, 2,2,4, 4, 23, 142};
+    int sz = 9;
 
-    cout << "Original array: " << endl;
-    for (int i=0; i<sz; i++) {
-        cout << arr[i] << " " ;
-    }
-    cout << endl;
+    cout << uniqueVal(arr, sz);
 
-    cout << "New array: " << endl;
-    cout << swapFn(arr, sz);
     return 0;
 }
