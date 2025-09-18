@@ -33,11 +33,26 @@ int maxSubarray(int arr[], int sz)
     return larger;
 }
 
+int optimizedWay(int arr[], int sz) {
+    int maxSum = INT_MIN;
+    for(int st=0; st<sz; st++) {
+        int currentSum = 0;
+        for(int end=st; end<sz; end++) {
+            currentSum += arr[end];
+            maxSum = max(maxSum, currentSum);
+        }
+    }
+
+    cout << maxSum << endl;
+    return 0;
+}
+
 int main()
 {
     int arr[] = {2,34,2,45,123};
     int sz = 5;
 
+    cout << optimizedWay(arr, sz) << endl;
     cout << maxSubarray(arr, sz);
 
     return 0;
