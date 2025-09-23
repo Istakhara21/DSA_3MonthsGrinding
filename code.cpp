@@ -3,31 +3,30 @@
 #include <vector>
 using namespace std;
 
-int pairSum(int arr[], int n) {
-    vector<int> vec;
-    int target = 9;
-    for(int i=0; i<n; i++) {
-        for(int j=i+1; j<n; j++) {
-            if(arr[i]+arr[j] == target){
-                vec.push_back(i);
-                vec.push_back(j);
-            }
+vector<int> pairSum(vector<int> nums, int target){
+    vector<int> ans;
+    int n = nums.size();
+
+    int i=0, j=n-1;
+
+    while(i<j) {
+        int pairSum = nums[i] + nums[j];
+        if(pairSum > target) {
+            j--;
+        }else if(pairSum < target) {
+            i++;
+        }else {
+            return ans;
         }
     }
-
-    for(int val : vec) {
-        cout << val << endl;
-    }
-
-    return 0;
+    return ans;
 }
-
 int main() {
 
-    int arr[] = {2,5,7,11};
-    int n = 4;
+    vector<int> nums = {2,5,7,11};
+    int target = 9;
 
-    cout << pairSum(arr, n);
-    
+    vector<int> ans = pairSum(nums, target);
+    cout << ans[0] << ", " << ans[1] << endl; 
     return 0;
 }
