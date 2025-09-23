@@ -3,30 +3,35 @@
 #include <vector>
 using namespace std;
 
-vector<int> pairSum(vector<int> nums, int target){
-    vector<int> ans;
-    int n = nums.size();
-
-    int i=0, j=n-1;
-
-    while(i<j) {
-        int pairSum = nums[i] + nums[j];
-        if(pairSum > target) {
-            j--;
-        }else if(pairSum < target) {
-            i++;
-        }else {
-            return ans;
+int majorityElement(int arr[], int n)
+{
+    for (int i = 0; i < n; i++)
+    {
+        int count = 1;
+        for (int j = i + 1; j < n; j++)
+        {
+            if (arr[i] == arr[j])
+            {
+                count++;
+            }
+        }
+        if (count > (n) / 2)
+        {
+            return arr[i];
+        }
+        else
+        {
+            count = 1;
         }
     }
-    return ans;
+    return 0;
 }
-int main() {
+int main()
+{
 
-    vector<int> nums = {2,5,7,11};
-    int target = 9;
+    int arr[] = {2,2,1,1,1,2,2};
+    int n = 7;
 
-    vector<int> ans = pairSum(nums, target);
-    cout << ans[0] << ", " << ans[1] << endl; 
+    cout << majorityElement(arr, n);
     return 0;
 }
