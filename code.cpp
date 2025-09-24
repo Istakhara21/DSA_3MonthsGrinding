@@ -1,29 +1,31 @@
 #include <iostream>
 #include <climits>
 #include <vector>
+#include <algorithm>
 using namespace std;
 
 int majorityElement(int arr[], int n)
 {
-    for (int i = 0; i < n; i++)
+    int freq = 1;
+    int ans = 0;
+    sort(arr, arr + n);
+    for (int i = 1; i < n; i++)
     {
-        int count = 1;
-        for (int j = i + 1; j < n; j++)
-        {
-            if (arr[i] == arr[j])
-            {
-                count++;
-            }
-        }
-        if (count > (n) / 2)
-        {
-            return arr[i];
-        }
-        else
-        {
-            count = 1;
+        if(arr[i] == arr[i-1]) {
+            freq++;
+            ans = arr[i];
+        }else {
+            freq = 1;
+            ans = 0;
         }
     }
+    return ans;
+
+
+    // checking for sorting algo
+    // for(int i=0; i<n; i++) {
+    //     cout << arr[i] << " ";
+    // }
     return 0;
 }
 int main()
