@@ -6,32 +6,23 @@ using namespace std;
 
 int majorityElement(int arr[], int n)
 {
-    int freq = 1;
-    int ans = 0;
-    sort(arr, arr + n);
-    for (int i = 1; i < n; i++)
-    {
-        if(arr[i] == arr[i-1]) {
-            freq++;
+    int freq = 0, ans = 0;
+    for(int i=0; i<n; i++) {
+        if(freq == 0) {
             ans = arr[i];
+        }
+        if(ans == arr[i]) {
+            freq++;
         }else {
-            freq = 1;
-            ans = 0;
+            freq--;
         }
     }
     return ans;
-
-
-    // checking for sorting algo
-    // for(int i=0; i<n; i++) {
-    //     cout << arr[i] << " ";
-    // }
-    return 0;
 }
 int main()
 {
 
-    int arr[] = {2,2,1,1,1,2,2};
+    int arr[] = {2, 2, 1, 1, 1, 2, 2};
     int n = 7;
 
     cout << majorityElement(arr, n);
