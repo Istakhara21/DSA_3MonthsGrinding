@@ -2,29 +2,32 @@
 #include <climits>
 #include <vector>
 #include <algorithm>
+
 using namespace std;
 
-int majorityElement(int arr[], int n)
-{
-    int freq = 0, ans = 0;
-    for(int i=0; i<n; i++) {
-        if(freq == 0) {
-            ans = arr[i];
-        }
-        if(ans == arr[i]) {
-            freq++;
-        }else {
-            freq--;
-        }
-    }
-    return ans;
-}
 int main()
 {
 
-    int arr[] = {2, 2, 1, 1, 1, 2, 2};
-    int n = 7;
+    vector<int> prices = {7, 6, 4, 1, 3, 2};
+    int lowestVal = prices[0];
+    int currentProfit = 0;
+    for (int i = 1; i < prices.size(); i++)
+    {
+        for (int j = i - 1; j >= 0; j--)
+        {
+            if (prices[j] < lowestVal)
+            {
+                lowestVal = prices[j];
+            }
+        }
+        currentProfit = prices[i] - lowestVal;
+        if (currentProfit < prices[i])
+        {
+            currentProfit = prices[i];
+        }
+    }
 
-    cout << majorityElement(arr, n);
-    return 0;
+    cout << currentProfit;
+
+    return currentProfit;
 }
