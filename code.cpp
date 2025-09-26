@@ -7,27 +7,27 @@ using namespace std;
 
 int main()
 {
+    vector<int> nums = {1, 2, 3, 4};
+    vector<int> answer;
 
-    vector<int> prices = {7, 6, 4, 1, 3, 2};
-    int lowestVal = prices[0];
-    int currentProfit = 0;
-    for (int i = 1; i < prices.size(); i++)
+    for (int i = 0; i < nums.size(); i++)
     {
-        for (int j = i - 1; j >= 0; j--)
+        int ans = 1;
+
+        for (int j = 0; j < nums.size(); j++)
         {
-            if (prices[j] < lowestVal)
+            if (i != j)
             {
-                lowestVal = prices[j];
+                ans *= nums[j];
             }
         }
-        currentProfit = prices[i] - lowestVal;
-        if (currentProfit < prices[i])
-        {
-            currentProfit = prices[i];
-        }
+        answer.push_back(ans);
     }
 
-    cout << currentProfit;
+    for (int val : answer)
+    {
+        cout << val << " ";
+    }
 
-    return currentProfit;
+    return 0;
 }
