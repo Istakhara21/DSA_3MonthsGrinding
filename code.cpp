@@ -5,28 +5,25 @@
 
 using namespace std;
 
-int main()
-{
-    vector<int> nums = {1, 2, 3, 4};
-    vector<int> answer;
 
-    for (int i = 0; i < nums.size(); i++)
-    {
-        int ans = 1;
 
-        for (int j = 0; j < nums.size(); j++)
-        {
-            if (i != j)
-            {
-                ans *= nums[j];
-            }
+int main() {
+    int arr[] = {1,2,4,5,6,7,8};
+    int n = 7;
+    int target = 7;
+    int st=0, end=n-1;
+
+    // binary search code
+    while(st <= end) {
+        int mid = (st+end) / 2;
+        if(target > arr[mid]) {
+            st = mid+1;
+        }else if(target < arr[mid]) {
+            end = mid -1;
+        }else {
+            cout << arr[mid];
+            break;
         }
-        answer.push_back(ans);
-    }
-
-    for (int val : answer)
-    {
-        cout << val << " ";
     }
 
     return 0;
